@@ -1,0 +1,169 @@
+{
+  "title": "Schéma SCDL Subventions",
+  "author": "",
+  "contributor": "",
+  "version": "1.0.0",
+  "created": "2018-04-27",
+  "description": "",
+  "homepage": "",
+  "uri": "",
+  "example": "",
+  "fields": [
+ {
+            "name": "ATTRIBUANT_NOM",
+            "type": "string",
+            "format": "default",
+            "title": "Nom de l'attribuant",
+            "description": "Nom officiel de l'organisme attribuant la subvention",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "ATTRIBUANT_ID",
+            "type": "string",
+            "format": "default",
+            "title": "Identification de l'attribuant",
+            "description": "Identifiant du Système d'Identification du Répertoire des Etablissements (SIRET)",
+			"example": "",
+			"constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "CONVENTION_DATE",
+            "type": "string",
+            "format": "default",
+            "title": "Date de la convention de subvention",
+            "description": "Date de la convention au format AAAA-MM-JJ (ISO 8601)",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "DECISION_REF",
+            "type": "string",
+            "format": "default",
+            "title": "Référence de la décision",
+            "description": "Identifiant interne de l’acte matérialisant la décision d’attribution de la subvention (optionnel)",
+			"example": "",
+            "constraints": {
+              "required": false,
+              "pattern": ""}
+          },
+          {
+            "name": "BENEFICIAIRE_NOM",
+            "type": "string",
+            "format": "default",
+            "title": "Nom du bénéficiaire",
+            "description": "Nom officiel (raison sociale) du bénéficiaire de la subvention",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "BENEFICIAIRE_ID",
+            "type": "string",
+            "format": "default",
+            "title": "Identification du bénéficiaire",
+            "description": "Identifiant du Système d'Identification du Répertoire des Etablissements (SIRET)",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "SUBVENTION_OBJET",
+            "type": "string",
+            "format": "default",
+            "title": "Objet de la subvention",
+            "description": "Description de l'objet de la subvention (texte de 256 caractères maximum)",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "SUBVENTION_MONTANT",
+            "type": "string",
+            "format": "default",
+            "title": "Montant total de la subvention",
+            "description": "Montant total de la subvention avant répartition entre les bénéficiaires (nombre avec un point comme séparateur de décimales)",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "SUBVENTION_NATURE",
+            "type": "string",
+            "format": "default",
+            "title": "Nature de la subvention",
+            "description": "Liste de plusieurs choix possibles séparés par des point-virgules : aide en numéraire;aide en nature",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "CONDITIONS_VERSEMENT",
+            "type": "string",
+            "format": "default",
+            "title": "Conditions de versement de la subvention",
+            "description": "Description des conditions de versement de la subvention (texte de 256 caractères maximum) : unique;échelonné;autre",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "DATE_PERIODE_VERSEMENT",
+            "type": "string",
+            "format": "default",
+            "title": "Date ou période de versement",
+            "description": "Si le versement est unique et que la date précise est connue, alors il s'agit d'une date au format AAAA-MM-JJ (ISO 8601). Si le versement est échelonné (ou que la date précise de versement unique est inconnue), alors il s'agit d'une période exprimée au format AAAA-MM-JJ/AAAA-MM-JJ (ISO 8601).",
+			"example": "",
+			"constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "RAE_NUM",
+            "type": "string",
+            "format": "default",
+            "title": "Numéro unique de référencement dans le Répertoire des Aides aux Entreprises",
+            "description": "Numéro unique RAE communiqué par le service aides-entreprises.fr (optionnel)",
+			"example": "",
+            "constraints": {
+              "required": false,
+              "pattern": ""}
+          },
+          {
+            "name": "NOTIF_UE",
+            "type": "boolean",
+            "format": "default",
+            "title": "Aide d'Etat notifiée à la Commission européenne",
+            "description": "Booléen : oui ou non",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          },
+          {
+            "name": "SUBVENTION_POURCENTAGE",
+            "type": "string",
+            "format": "default",
+            "title": "Pourcentage du montant total de la subvention attribuée au bénéficiaire",
+            "description": "Pourcentage exprimé sous la forme d'un nombre avec un point comme séparateur de décimales",
+			"example": "",
+            "constraints": {
+              "required": true,
+              "pattern": ""}
+          }
+
+      }
+  ]
+}

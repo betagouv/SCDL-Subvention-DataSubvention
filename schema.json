@@ -1,180 +1,169 @@
 {
+    "$schema": "https://frictionlessdata.io/schemas/table-schema.json",
     "title": "Schéma SCDL Subventions",
-    "author": "",
-    "contributor": "",
-    "version": "1.0.0",
+    "author": "OpenDataFrance",
+    "version": "1.1",
     "created": "2018-04-27",
-    "description": "",
-    "homepage": "",
-    "uri": "",
-    "example": "",
+    "description": "Schéma validant le format relatif aux subventions du SCDL (Socle Commun des Données Locales).",
+    "homepage": "https://git.opendatafrance.net/scdl/subventions",
     "fields": [
         {
-            "name": "ATTRIBUANT_NOM",
+            "name": "nomAttribuant",
             "type": "string",
-            "format": "default",
             "title": "Nom de l'attribuant",
             "description": "Nom officiel de l'organisme attribuant la subvention",
-            "example": "",
+            "example": "Région Bretagne",
             "constraints": {
-                "required": true,
-                "pattern": ""
+                "required": true
             }
         },
         {
-            "name": "ATTRIBUANT_ID",
+            "name": "idAttribuant",
             "type": "string",
-            "format": "default",
             "title": "Identification de l'attribuant",
             "description": "Identifiant du Système d'Identification du Répertoire des Etablissements (SIRET)",
-            "example": "",
+            "example": "23350001600040",
             "constraints": {
                 "required": true,
-                "pattern": ""
+                "pattern": "^\\d{14}$"
             }
         },
         {
-            "name": "CONVENTION_DATE",
-            "type": "string",
-            "format": "default",
+            "name": "dateConvention",
+            "type": "date",
             "title": "Date de la convention de subvention",
             "description": "Date de la convention au format AAAA-MM-JJ (ISO 8601)",
-            "example": "",
+            "example": "2017-06-27",
             "constraints": {
-                "required": true,
-                "pattern": ""
+                "required": true
             }
         },
         {
-            "name": "DECISION_REF",
+            "name": "referenceDecision",
             "type": "string",
-            "format": "default",
             "title": "Référence de la décision",
-            "description": "Identifiant interne de l’acte matérialisant la décision d’attribution de la subvention (optionnel)",
-            "example": "",
+            "description": "Identifiant interne de l’acte matérialisant la décision d’attribution de la subvention",
+            "example": "Z34507",
             "constraints": {
-                "required": false,
-                "pattern": ""
+                "required": false
             }
         },
         {
-            "name": "BENEFICIAIRE_NOM",
+            "name": "nomBeneficiaire",
             "type": "string",
-            "format": "default",
             "title": "Nom du bénéficiaire",
             "description": "Nom officiel (raison sociale) du bénéficiaire de la subvention",
-            "example": "",
+            "example": "Rodriguez SA",
             "constraints": {
-                "required": true,
-                "pattern": ""
+                "required": true
             }
         },
         {
-            "name": "BENEFICIAIRE_ID",
+            "name": "idBeneficiaire",
             "type": "string",
-            "format": "default",
             "title": "Identification du bénéficiaire",
             "description": "Identifiant du Système d'Identification du Répertoire des Etablissements (SIRET)",
-            "example": "",
+            "example": "81223113200026",
             "constraints": {
                 "required": true,
-                "pattern": ""
+                "pattern": "^\\d{14}$"
             }
         },
         {
-            "name": "SUBVENTION_OBJET",
+            "name": "objet",
             "type": "string",
-            "format": "default",
             "title": "Objet de la subvention",
-            "description": "Description de l'objet de la subvention (texte de 256 caractères maximum)",
-            "example": "",
+            "description": "Description de l'objet de la subvention",
+            "example": "Aide à l'embauche",
             "constraints": {
                 "required": true,
-                "pattern": ""
+                "maxLength": 256
             }
         },
         {
-            "name": "SUBVENTION_MONTANT",
-            "type": "string",
-            "format": "default",
+            "name": "montant",
+            "type": "number",
             "title": "Montant total de la subvention",
-            "description": "Montant total de la subvention avant répartition entre les bénéficiaires (nombre avec un point comme séparateur de décimales)",
-            "example": "",
+            "description": "Montant total de la subvention avant répartition entre les bénéficiaires",
+            "example": "22000.80",
             "constraints": {
-                "required": true,
-                "pattern": ""
+                "required": true
             }
         },
         {
-            "name": "SUBVENTION_NATURE",
+            "name": "nature",
             "type": "string",
-            "format": "default",
             "title": "Nature de la subvention",
-            "description": "Liste de plusieurs choix possibles séparés par des point-virgules : aide en numéraire;aide en nature",
-            "example": "",
+            "description": "Liste de plusieurs choix possibles séparés par des point-virgules",
+            "example": "aide en numéraire;aide en nature",
             "constraints": {
                 "required": true,
-                "pattern": ""
+                "enum": [
+                    "aide en numéraire",
+                    "aide en nature",
+                    "aide en numéraire;aide en nature",
+                    "aide en nature;aide en numéraire"
+                ]
             }
         },
         {
-            "name": "CONDITIONS_VERSEMENT",
+            "name": "conditionsVersement",
             "type": "string",
-            "format": "default",
             "title": "Conditions de versement de la subvention",
-            "description": "Description des conditions de versement de la subvention (texte de 256 caractères maximum) : unique;échelonné;autre",
+            "description": "Description des conditions de versement de la subvention. Valeur parmi 'unique', 'échelonné' ou texte libre.",
             "example": "",
             "constraints": {
                 "required": true,
-                "pattern": ""
+                "maxLength": 256
             }
         },
         {
-            "name": "DATE_PERIODE_VERSEMENT",
+            "name": "datesPeriodeVersement",
             "type": "string",
-            "format": "default",
             "title": "Date ou période de versement",
             "description": "Si le versement est unique et que la date précise est connue, alors il s'agit d'une date au format AAAA-MM-JJ (ISO 8601). Si le versement est échelonné (ou que la date précise de versement unique est inconnue), alors il s'agit d'une période exprimée au format AAAA-MM-JJ/AAAA-MM-JJ (ISO 8601).",
-            "example": "",
+            "example": "2017-12-14",
             "constraints": {
                 "required": true,
-                "pattern": ""
+                "pattern": "^[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}(\\/[0-9]{4}\\-[0-9]{2}\\-[0-9]{2})?$"
             }
         },
         {
-            "name": "RAE_NUM",
+            "name": "idRAE",
             "type": "string",
-            "format": "default",
             "title": "Numéro unique de référencement dans le Répertoire des Aides aux Entreprises",
-            "description": "Numéro unique RAE communiqué par le service aides-entreprises.fr (optionnel)",
-            "example": "",
+            "description": "Numéro unique RAE communiqué par le service aides-entreprises.fr",
+            "example": "12345",
             "constraints": {
-                "required": false,
-                "pattern": ""
+                "required": false
             }
         },
         {
-            "name": "NOTIF_UE",
+            "name": "notificationUE",
             "type": "boolean",
-            "format": "default",
+            "trueValues": [
+                "oui"
+            ],
+            "falseValues": [
+                "non"
+            ],
             "title": "Aide d'Etat notifiée à la Commission européenne",
             "description": "Booléen : oui ou non",
-            "example": "",
+            "example": "oui",
             "constraints": {
-                "required": true,
-                "pattern": ""
+                "required": true
             }
         },
         {
-            "name": "SUBVENTION_POURCENTAGE",
-            "type": "string",
-            "format": "default",
+            "name": "pourcentageSubvention",
+            "type": "number",
             "title": "Pourcentage du montant total de la subvention attribuée au bénéficiaire",
             "description": "Pourcentage exprimé sous la forme d'un nombre avec un point comme séparateur de décimales",
-            "example": "",
+            "example": "0.8",
             "constraints": {
                 "required": true,
-                "pattern": ""
+                "minimum": 0,
+                "maximum": 1
             }
         }
     ]

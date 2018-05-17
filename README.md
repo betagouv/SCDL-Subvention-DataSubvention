@@ -19,7 +19,13 @@ TODO :
 
 ## Développement
 
-Pour développer en local :
+Pour les développeurs, ce schéma peut être testé avec différents fichiers tabulaires en utilisant [Goodtables](https://github.com/frictionlessdata/goodtables-py) comme ceci :
+
+```sh
+goodtables validate --schema schema.json exemples/exemple_invalide.csv
+```
+
+Ou bien :
 
 ```sh
 npm install -g localtunnel

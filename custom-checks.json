@@ -1,5 +1,5 @@
 {
-    "$schema": "https://git.opendatafrance.net/validata/validata-py/raw/master/custom_checks_schema.json",
+    "$schema": "https://git.opendatafrance.net/validata/custom-checks-schema/raw/v0.1/custom_checks_schema.json",
     "title": "Validations personnalisées en complément du schéma SCDL Subventions",
     "author": "Pierre Dittgen, Jailbreak",
     "version": "0.1",

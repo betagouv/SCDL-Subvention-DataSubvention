@@ -1,10 +1,10 @@
 {
     "$schema": "https://frictionlessdata.io/schemas/table-schema.json",
-    "title": "Schéma SCDL Subventions",
+    "title": "Subventions",
     "author": "OpenDataFrance",
     "version": "1.1",
     "created": "2018-04-27",
-    "description": "Schéma validant le format relatif aux subventions du SCDL (Socle Commun des Données Locales).",
+    "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité locale",
     "homepage": "https://git.opendatafrance.net/scdl/subventions",
     "fields": [
         {

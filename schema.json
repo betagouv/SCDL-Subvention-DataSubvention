@@ -166,5 +166,19 @@
                 "maximum": 1
             }
         }
+    ],
+    "custom_checks": [
+        {
+            "name": "french-siret-value",
+            "params": {
+                "column": "idAttribuant"
+            }
+        },
+        {
+            "name": "french-siret-value",
+            "params": {
+                "column": "idBeneficiaire"
+            }
+        }
     ]
 }

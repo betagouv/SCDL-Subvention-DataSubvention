@@ -10,3 +10,9 @@ De fait, la spécification SCDL du modèle de données relatif aux subventions a
 
 Si nécessaire, elle sera mise à jour, adaptée et consolidée à partir des mêmes sources.
 
+#### `Avertissement !`
+
+L'utilisation de cette spécification requiert de prêter une attention toute particulière aux points suivants :
+
+* Dans l'attente d'une [éventuelle modification](https://github.com/etalab/format-subventions/issues/2) mais contrairement à ce qui est pour le moment prévu dans le format réglementaire, cette spécification énonce que le séparateur de dates pour une période est une barre oblique et pas un tiret du bas afin de respecter la norme internationale ISO 8601.
+* Pour s'y conformer, elle nécessite de créer une ligne par bénéficiaire et non une ligne par subvention. Dans le cas d'une subvention attribuée à plusieurs bénéficiaires, toutes les données de la subvention doivent être répétées à l'identique sur autant de lignes qu'il y a de bénéficiaires, à l'exception des champs suivants dont les valeurs varient : **nomBeneficiaire**, **idBeneficiaire**, et **pourcentageSubvention**. Dans certains cas, les champs **conditionsVersement** et **datesPeriodeVersement** peuvent également varier d'un bénéficiaire à un autre, pour une même subvention.

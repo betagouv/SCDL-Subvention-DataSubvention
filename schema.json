@@ -113,7 +113,7 @@
             "title": "Conditions de versement de la subvention",
             "description": "Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné', ou 'autre'. La valeur 'autre' correspond à une description libre des modalités de versement de la subvention dans la limite de 356 caractères maximum.",
             "type": "string",
-            "example": "",
+            "example": "échelonné",
             "constraints": {
                 "required": true,
                 "maxLength": 356

@@ -4,7 +4,7 @@
     "author": "OpenDataFrance",
     "version": "1.1",
     "created": "2018-04-27",
-    "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité locale",
+    "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité",
     "homepage": "https://git.opendatafrance.net/scdl/subventions",
     "fields": [
         {

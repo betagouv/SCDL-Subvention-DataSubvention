@@ -1,4 +1,4 @@
-# Schéma relatif aux subventions publiques attribuées par une collectivité
+# Schéma relatif aux subventions attribuées par une collectivité
 
 - Basé sur la spécification SCDL "Subventions" version 1.1
   - [version 1.1 publiée](http://www.opendatafrance.net/SCDL_Subventions)

@@ -1,8 +1,7 @@
 La spécification du modèle de données peut être utilement complétée par les documents suivants :
 
-* Exemple de fichier
+* Fichier gabarit à exporter
 * [Schéma de validation](https://git.opendatafrance.net/scdl/subventions/blob/master/schema.json)
-* [Documentation générée à partir du schéma](https://scdl.opendatafrance.net/docs/schemas/scdl-subventions.html)
 
 Pour poser une question, commenter, faire un retour d’usage ou contribuer à l’amélioration du modèle de données, vous pouvez :
 

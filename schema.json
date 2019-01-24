@@ -2,10 +2,23 @@
     "$schema": "https://frictionlessdata.io/schemas/table-schema.json",
     "title": "Subventions",
     "author": "OpenDataFrance",
+    "contributor": "Pierre Dittgen",
     "version": "1.1",
     "created": "2018-04-27",
+    "updated": "2019-01-24",
     "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité",
     "homepage": "https://git.opendatafrance.net/scdl/subventions",
+    "uri": "https://git.opendatafrance.net/scdl/subventions/raw/v1.1/schema.json",
+    "examples": [
+        {
+            "name": "Subventions fictives invalides",
+            "url": "https://git.opendatafrance.net/scdl/subventions/raw/v1.1/exemples/exemple_invalide.csv"
+        },
+        {
+            "name": "Erreur de format (HTML au lieu de CSV)",
+            "url": "https://git.opendatafrance.net/"
+        }
+    ],
     "fields": [
         {
             "name": "nomAttribuant",
@@ -14,8 +27,7 @@
             "type": "string",
             "example": "Région Bretagne",
             "constraints": {
-                "required": true,
-                "maxLenght": 140
+                "required": true
             }
         },
         {
@@ -44,10 +56,7 @@
             "title": "Référence de la décision",
             "description": "Identifiant interne de l’acte matérialisant la décision d’attribution de la subvention. Sa composition dépend des pratiques propres à la collectivité.",
             "type": "string",
-            "example": "2017-03-103",
-            "constraints": {
-                "required": false
-            }
+            "example": "2017-03-103"
         },
         {
             "name": "nomBeneficiaire",
@@ -56,8 +65,7 @@
             "type": "string",
             "example": "Association Les Petits Débrouillards Bretagne",
             "constraints": {
-                "required": true,
-                "maxLenght": 140
+                "required": true
             }
         },
         {
@@ -79,7 +87,7 @@
             "example": "Animations climat-énergie dans les lycées de la région",
             "constraints": {
                 "required": true,
-                "maxLength": 356
+                "maxLength": 256
             }
         },
         {
@@ -111,12 +119,12 @@
         {
             "name": "conditionsVersement",
             "title": "Conditions de versement de la subvention",
-            "description": "Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné', ou 'autre'. La valeur 'autre' correspond à une description libre des modalités de versement de la subvention dans la limite de 356 caractères maximum.",
+            "description": "Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné' ou 'autre'. La valeur 'autre' correspond à une description libre des modalités de versement de la subvention dans la limite de 356 caractères maximum.",
             "type": "string",
             "example": "échelonné",
             "constraints": {
                 "required": true,
-                "maxLength": 356
+                "maxLength": 256
             }
         },
         {
@@ -137,8 +145,7 @@
             "type": "string",
             "example": "12345",
             "constraints": {
-                "required": false,
-                "maxLenght": 5
+                "maxLength": 5
             }
         },
         {

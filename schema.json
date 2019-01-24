@@ -3,16 +3,16 @@
     "title": "Subventions",
     "author": "OpenDataFrance",
     "contributor": "Pierre Dittgen",
-    "version": "1.1",
+    "version": "2.0.0",
     "created": "2018-04-27",
     "updated": "2019-01-24",
     "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité",
     "homepage": "https://git.opendatafrance.net/scdl/subventions",
-    "uri": "https://git.opendatafrance.net/scdl/subventions/raw/v1.1/schema.json",
+    "uri": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.0/schema.json",
     "examples": [
         {
             "name": "Subventions fictives invalides",
-            "url": "https://git.opendatafrance.net/scdl/subventions/raw/v1.1/exemples/exemple_invalide.csv"
+            "url": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.0/exemples/exemple_invalide.csv"
         },
         {
             "name": "Erreur de format (HTML au lieu de CSV)",

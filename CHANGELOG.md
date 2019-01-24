@@ -1,6 +1,6 @@
 # Changelog
 
-# 1.1 -> next
+# 1.1 -> 2.0.0
 - ajout du fichier CHANGELOG.md
 - dans schema.json:
   - ajout de la clef `updated`

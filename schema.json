@@ -23,7 +23,7 @@
         {
             "name": "nomAttribuant",
             "title": "Nom de l'attribuant",
-            "description": "Nom officiel de la collectivité attribuant la subvention limité à 140 caractères maximum.",
+            "description": "Nom officiel de la collectivité attribuant la subvention.",
             "type": "string",
             "example": "Région Bretagne",
             "constraints": {
@@ -61,7 +61,7 @@
         {
             "name": "nomBeneficiaire",
             "title": "Nom du bénéficiaire",
-            "description": "Nom officiel ou raison sociale du bénéficiaire de la subvention limité à 140 caractères maximum.",
+            "description": "Nom officiel ou raison sociale du bénéficiaire de la subvention.",
             "type": "string",
             "example": "Association Les Petits Débrouillards Bretagne",
             "constraints": {
@@ -82,7 +82,7 @@
         {
             "name": "objet",
             "title": "Objet de la subvention",
-            "description": "Description de l'objet de la subvention attribuée limitée à 356 caractères maximum.",
+            "description": "Description de l'objet de la subvention attribuée limitée à 256 caractères maximum.",
             "type": "string",
             "example": "Animations climat-énergie dans les lycées de la région",
             "constraints": {
@@ -119,7 +119,7 @@
         {
             "name": "conditionsVersement",
             "title": "Conditions de versement de la subvention",
-            "description": "Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné' ou 'autre'. La valeur 'autre' correspond à une description libre des modalités de versement de la subvention dans la limite de 356 caractères maximum.",
+            "description": "Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné' ou 'autre'. La valeur 'autre' correspond à une description libre des modalités de versement de la subvention dans la limite de 256 caractères maximum.",
             "type": "string",
             "example": "échelonné",
             "constraints": {

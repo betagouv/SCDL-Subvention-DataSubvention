@@ -9,16 +9,6 @@
     "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité",
     "homepage": "https://git.opendatafrance.net/scdl/subventions",
     "uri": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.0/schema.json",
-    "examples": [
-        {
-            "name": "Subventions fictives invalides",
-            "url": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.0/exemples/exemple_invalide.csv"
-        },
-        {
-            "name": "Erreur de format (HTML au lieu de CSV)",
-            "url": "https://git.opendatafrance.net/"
-        }
-    ],
     "fields": [
         {
             "name": "nomAttribuant",

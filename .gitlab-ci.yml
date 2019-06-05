@@ -1,0 +1,48 @@
+variables:
+  CI_REPOSITORY_SSH_URL: git@git.opendatafrance.net:${CI_PROJECT_PATH}.git
+  SCHEMA_JSON: schema.json
+  SCHEMA_MD: schema.md
+
+build_schema_doc:
+  stage: build
+  image: node:10
+  only:
+    changes:
+      - $SCHEMA_JSON
+  variables:
+    LC_ALL: fr_FR.utf8
+  before_script:
+    - npm install @opendataschema/table-schema-to-markdown
+  script:
+    - npx table-schema-to-markdown $SCHEMA_JSON > $SCHEMA_MD
+  artifacts:
+    paths:
+      - $SCHEMA_MD
+  cache:
+    paths:
+      - node_modules/
+  tags:
+    - scdl
+
+commit_schema_md:
+  stage: deploy
+  image: git.opendatafrance.net:4567/scdl/documentation
+  only:
+    changes:
+      - $SCHEMA_JSON
+  before_script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - ssh-keyscan -t rsa git.opendatafrance.net >> ~/.ssh/known_hosts
+    - git config --global user.email "table-schema-to-markdown"
+    - git config --global user.name "Table Schema to Markdown bot"
+  script:
+    - git clone --branch $CI_COMMIT_REF_NAME $CI_REPOSITORY_SSH_URL
+    - mv $SCHEMA_MD $CI_PROJECT_NAME
+    - cd $CI_PROJECT_NAME
+    - git add $SCHEMA_MD
+    - git commit -m "Update $SCHEMA_MD" || true
+    - git push
+  tags:
+    - scdl

@@ -1,37 +1,35 @@
 # Schéma relatif aux subventions attribuées par une collectivité
 
-- Basé sur la spécification SCDL "Subventions" version 1.1
-  - [version 1.1 publiée](http://www.opendatafrance.net/SCDL_Subventions)
-- Basé sur [Arrêté du 17 novembre 2017 relatif aux conditions de mises à disposition des données essentielles des conventions de subvention](https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000036040528)
+## Contexte
 
-Voir aussi :
-- la [définition du format "subventions" d'Etalab](https://github.com/etalab/format-subventions)
-- la [page du forum d'Etalab dédiée au format "subventions"](https://forum.etalab.gouv.fr/t/cadre-juridique-et-technique-de-louverture-des-donnees-de-subventions)
+Dans le but de renforcer la transparence financière des aides octroyées par les personnes publiques, les collectivités locales, de plus de 3500 habitants et plus de 50 agents, qui attribuent des subventions dont le montant annuel est supérieur à 23 000€ ont l’obligation, à compter du 1er août 2017, de rendre accessibles, sous forme électronique, dans un standard ouvert aisément réutilisable et exploitable par un système de traitement automatisé, les données essentielles de leurs conventions de subvention. La nature et les modalités de diffusion de ces données essentielles ont été fixées par voie réglementaire.
 
-Notes :
-- les noms des colonnes SCDL ne correspondent pas à ceux de [l'arrêté](https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000036040528). Exemple `ATTRIBUANT_NOM ≠ nomAttribuant`. Cette version de développement du schéma SCDL utilise les noms de colonnes de l'arrêté.
+De fait, la spécification SCDL du modèle de données relatif aux subventions attribuées par une collectivité locale a été élaborée à partir des sources suivantes :
 
-TODO :
-- [ ] `idAttribuant` : valider la cohérence du code SIRET (cf [python-stdnum](https://arthurdejong.org/python-stdnum/doc/1.8/stdnum.fr.siret))
-- [ ] `datesPeriodeVersement` : valider la cohérence des dates après validation du Schéma, car on a dû utiliser le type "string" pour permettre de valider les intervalles de dates, mais il reste à savoir si ce sont bien des dates
-- [ ] `idRAE` : Trouver comment valider ce numéro
-- [ ] Explorer les foreign keys pour la cohérence des données pivot
+- Documents de cadrage juridique
+    - [​Décret n° 2017-779 du 5 mai 2017 relatif à l'accès sous forme électronique aux données essentielles des conventions de subvention​](https://www.legifrance.gouv.fr/jo_pdf.do?id=JORFTEXT000034600552)
+    - [​Arrêté du 17 novembre 2017 relatif aux conditions de mises à disposition des données essentielles des conventions de subvention​](https://www.legifrance.gouv.fr/jo_pdf.do?id=JORFTEXT000036040528)
+- Document de cadrage technique
+    - [​Format réglementaire pour la publication des données essentielles des conventions de subventions sur le dépôt Github de la mission Etalab​](https://github.com/etalab/format-subventions)
 
-## Développement
+Si nécessaire, elle sera mise à jour, adaptée et consolidée à partir des mêmes sources.
 
-Pour les développeurs, ce schéma peut être testé avec différents fichiers tabulaires en utilisant [Goodtables](https://github.com/frictionlessdata/goodtables-py) comme ceci :
+### Avertissement !
 
-```sh
-goodtables validate --schema schema.json exemples/exemple_invalide.csv
-```
+L'utilisation de cette spécification requiert de prêter une attention toute particulière aux points suivants :
 
-Ou bien :
+* Dans l'attente d'une [éventuelle modification](https://github.com/etalab/format-subventions/issues/2) mais contrairement à ce qui est pour le moment prévu dans le format réglementaire, cette spécification énonce que, pour **datesPeriodeVersement**,  le séparateur de dates pour une période est une barre oblique et pas un tiret du bas afin de respecter la norme internationale ISO 8601.
+* Pour s'y conformer, elle nécessite de créer une ligne par bénéficiaire et non une ligne par subvention. Dans le cas d'une subvention attribuée à plusieurs bénéficiaires, toutes les données de la subvention doivent être répétées à l'identique sur autant de lignes qu'il y a de bénéficiaires, à l'exception des champs suivants dont les valeurs varient : **nomBeneficiaire**, **idBeneficiaire**, et **pourcentageSubvention**. Dans certains cas, les champs **conditionsVersement** et **datesPeriodeVersement** peuvent également varier d'un bénéficiaire à un autre, pour une même subvention.
 
-```sh
-npm install -g localtunnel
-npm install -g http-server
-http-server -c-1
-lt --port 8080 --subdomain qualidata
-```
+## Voir aussi
 
-Utiliser [ce permalink](http://dev.qualidata.io/?source=https%3A%2F%2Fqualidata.localtunnel.me%2Fexemple_arrete.csv&schema=https%3A%2F%2Fqualidata.localtunnel.me%2Fschema.json).
+La spécification du modèle de données peut être utilement complétée par les documents suivants :
+
+* [Fichier gabarit à télécharger au format xlsx](https://scdl.opendatafrance.net/docs/templates/scdl-subventions.xlsx)
+* [Schéma de validation](https://git.opendatafrance.net/scdl/subventions/blob/master/schema.json)
+
+Pour poser une question, commenter, faire un retour d’usage ou contribuer à l’amélioration du modèle de données, vous pouvez :
+
+* adresser un message à [scdl@opendatafrance.email](mailto:scdl@opendatafrance.email?subject=Subventions)
+* participer au [fil de discussion dédié sur le forum de la mission Etalab](https://forum.etalab.gouv.fr/t/cadre-juridique-et-technique-de-louverture-des-donnees-de-subventions/4004)
+* ouvrir un ticket sur le [dépôt GitLab d’OpenDataFrance](https://git.opendatafrance.net/scdl/subventions/issues) ou sur le [dépôt Github de la mission Etalab](https://github.com/etalab/format-subventions/issues/new)

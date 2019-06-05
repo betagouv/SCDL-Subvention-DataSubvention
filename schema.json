@@ -1,14 +1,25 @@
 {
     "$schema": "https://frictionlessdata.io/schemas/table-schema.json",
+    "name": "scdl-subventions",
     "title": "Subventions",
-    "author": "OpenDataFrance",
-    "contributor": "Pierre Dittgen",
+    "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité",
+    "contributors": [
+        {
+            "title": "OpenDataFrance",
+            "role": "author"
+        },
+        {
+            "title": "Pierre Dittgen",
+            "organisation": "Jailbreak",
+            "email": "pierre.dittgen@jailbreak.paris",
+            "role": "author"
+        }
+    ],
     "version": "2.0.0",
     "created": "2018-04-27",
-    "updated": "2019-01-24",
-    "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité",
+    "lastModified": "2019-01-24",
     "homepage": "https://git.opendatafrance.net/scdl/subventions",
-    "uri": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.0/schema.json",
+    "path": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.0/schema.json",
     "fields": [
         {
             "name": "nomAttribuant",

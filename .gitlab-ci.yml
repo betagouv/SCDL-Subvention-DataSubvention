@@ -1,4 +1,4 @@
 include:
-  - project: 'scdl/doc-generator'
+  - project: 'scdl/documentation'
     ref: next
-    file: '.schema-gitlab-ci-template.yml'
+    file: '.gitlab-ci-for-schema-repo.yml'

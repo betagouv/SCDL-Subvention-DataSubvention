@@ -1,4 +1,6 @@
-# Schéma relatif aux subventions attribuées par une collectivité
+# Subventions
+
+Spécification du modèle de données relatif aux subventions attribuées par une collectivité
 
 ## Contexte
 

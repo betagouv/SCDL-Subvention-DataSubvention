@@ -3,6 +3,32 @@
     "name": "scdl-subventions",
     "title": "Subventions",
     "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité",
+    "countryCode": "FR",
+    "homepage": "https://git.opendatafrance.net/scdl/subventions",
+    "path": "https://git.opendatafrance.net/scdl/subventions/raw/next/schema.json",
+    "resources": [
+        {
+      "title": "Exemple de fichier subventions invalide",
+      "path": "https://git.opendatafrance.net/scdl/subventions/raw/next/exemples/exemple_invalide.csv"
+        }
+    ],
+    "sources": [
+        {
+      "title": "Décret n° 2017-779 du 5 mai 2017 relatif à l'accès sous forme électronique aux données essentielles des conventions de subvention​",
+      "path": "https://www.legifrance.gouv.fr/jo_pdf.do?id=JORFTEXT000034600552"
+        },
+        {
+      "title": "Arrêté du 17 novembre 2017 relatif aux conditions de mises à disposition des données essentielles des conventions de subvention​",
+      "path": "https://www.legifrance.gouv.fr/jo_pdf.do?id=JORFTEXT000036040528"
+        },
+        {
+      "title": "Format réglementaire pour la publication des données essentielles des conventions de subventions sur le dépôt Github de la mission Etalab​",
+      "path": "https://github.com/etalab/format-subventions"
+        }
+    ],
+    "created": "2018-04-27",
+    "lastModified": "2019-01-24",
+    "version": "2.0.0",
     "contributors": [
         {
             "title": "OpenDataFrance",
@@ -15,11 +41,6 @@
             "role": "author"
         }
     ],
-    "version": "2.0.0",
-    "created": "2018-04-27",
-    "lastModified": "2019-01-24",
-    "homepage": "https://git.opendatafrance.net/scdl/subventions",
-    "path": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.0/schema.json",
     "fields": [
         {
             "name": "nomAttribuant",

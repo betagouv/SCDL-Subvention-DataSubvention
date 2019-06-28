@@ -1,4 +1,0 @@
-include:
-  - project: 'scdl/documentation'
-    ref: next
-    file: '.gitlab-ci-for-schema-repo.yml'

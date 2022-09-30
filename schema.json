@@ -8,8 +8,16 @@
   "path": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.1/schema.json",
   "resources": [
     {
-      "title": "Exemple de fichier subventions invalide",
-      "path": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.1/exemples/exemple_invalide.csv"
+      "title": "Exemple de fichier subventions valide",
+      "path": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.1/exemples/exemple_valide.csv"
+    },
+    {
+      "title": "Exemple de fichier subventions invalide (erreurs cellules)",
+      "path": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.1/exemples/exemple_invalide_erreurs_cellules.csv"
+    },
+    {
+      "title": "Exemple de fichier subventions invalide (erreurs colonnes)",
+      "path": "https://git.opendatafrance.net/scdl/subventions/raw/v2.0.1/exemples/exemple_invalide_erreurs_colonnes.csv"
     }
   ],
   "sources": [

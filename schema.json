@@ -47,6 +47,18 @@
       "organisation": "Jailbreak",
       "email": "pierre.dittgen@jailbreak.paris",
       "role": "author"
+    },
+    {
+      "title": "Quentin Loridant",
+      "organisation": "multi",
+      "email": "quentin.loridant@multi.coop",
+      "role": "contributor"
+    },
+    {
+      "title": "Johan Richer",
+      "organisation": "multi",
+      "email": "johan.richer@multi.coop",
+      "role": "contributor"
     }
   ],
   "fields": [

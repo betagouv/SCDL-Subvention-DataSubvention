@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0
+- Ajout du champs dispositifAide
+- Modification du champs idBeneficiaire : suppression de la contrainte champs requis
+- Rajout du champs rnaBeneficiaire non requis
+- Rajout du custom check one-of-required qui vérifie que pour une ligne donnée l'idBeneficiaire ou le rnaBeneficiaire est rempli
+
 ## 2.0.2
 
 - Correction de la valeur d'exemple pour le champ `datesPeriodeVersement` #10

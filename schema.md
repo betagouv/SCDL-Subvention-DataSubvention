@@ -4,8 +4,8 @@ Spécification du modèle de données relatif aux subventions attribuées par un
 
 - nom : `subventions`
 - page d'accueil : https://git.opendatafrance.net/scdl/subventions
-- URL du schéma : https://git.opendatafrance.net/scdl/subventions/raw/v2.0.1/schema.json
-- version : `2.0.1`
+- URL du schéma : https://git.opendatafrance.net/scdl/subventions/raw/v2.0.2/schema.json
+- version : `2.0.2`
 - date de création : 27/04/2018
 - date de dernière modification : 28/06/2019
 - concerne le pays : FR
@@ -13,6 +13,9 @@ Spécification du modèle de données relatif aux subventions attribuées par un
 - contributeurs :
   - OpenDataFrance (auteur)
   - Pierre Dittgen, Jailbreak (auteur) [pierre.dittgen@jailbreak.paris](pierre.dittgen@jailbreak.paris)
+  - Quentin Loridant, multi [quentin.loridant@multi.coop](quentin.loridant@multi.coop)
+  - Johan Richer, multi [johan.richer@multi.coop](johan.richer@multi.coop)
+  - Amélie Rondot, multi [amelie.rondot@multi.coop](amelie.rondot@multi.coop)
 - ressources :
   - Exemple de fichier subventions invalide ([lien](https://git.opendatafrance.net/scdl/subventions/raw/v2.0.1/exemples/exemple_invalide.csv))
 - sources :
@@ -22,7 +25,7 @@ Spécification du modèle de données relatif aux subventions attribuées par un
 
 ## Modèle de données
 
-Ce modèle de données repose sur les 14 champs suivants correspondant aux colonnes du fichier tabulaire.
+Ce modèle de données repose sur les 16 champs suivants correspondant aux colonnes du fichier tabulaire.
 
 ### `nomAttribuant`
 
@@ -71,8 +74,15 @@ Ce modèle de données repose sur les 14 champs suivants correspondant aux colon
 - description : Identifiant du [Système d'Identification du Répertoire des Etablissements](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) (SIRET) du bénéficiaire de la subvention, composé de 9 chiffres SIREN + 5 chiffres NIC d’un seul tenant.
 - type : chaîne de caractères
 - exemple : `38047555800058`
-- valeur obligatoire
 - motif : `^\d{14}$`
+
+### `rnaBeneficiaire`
+
+- titre : Identification RNA du bénéficiaire
+- description : Numéro d'identification RNA [Répertoire National des Associations](https://associations.gouv.fr/le-rna-repertoire-national-des-associations.html) du bénéficiaire de la subvention, débutant par 'W' et composé de 9 chiffres
+- type : chaîne de caractères
+- exemple : `W380475558`
+- motif : `^W\d{9}$`
 
 ### `objet`
 
@@ -146,3 +156,10 @@ Ce modèle de données repose sur les 14 champs suivants correspondant aux colon
 - valeur obligatoire
 - valeur minimale : 0.01
 - valeur maximale : 1
+
+### `dispositifAide`
+
+- titre : Identifiant référençant le dispositif d'aide à l'origine de la subvention
+- description : Identifiant présent dans les données issues du [schéma des dispositifs d'aide](https://schema.data.gouv.fr/etalab/schema-dispositif-aide/). Il peut être utilisé à la place de l'identifiant `idRAE` qui ne concerne que les aides aux entreprises.
+- type : chaîne de caractères
+- exemple : `65d5b6c7-102c-4440-ac3b-768f708edc0a`

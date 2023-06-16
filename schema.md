@@ -1,6 +1,6 @@
 # Subventions
 
-Spécification du modèle de données relatif aux subventions attribuées par une collectivité
+Spécification du modèle de données relatif aux subventions attribuées par le service public
 
 - nom : `subventions`
 - page d'accueil : https://git.opendatafrance.net/scdl/subventions
@@ -27,6 +27,22 @@ Spécification du modèle de données relatif aux subventions attribuées par un
 
 Ce modèle de données repose sur les 16 champs suivants correspondant aux colonnes du fichier tabulaire.
 
+### `multiFinanceur`
+
+- titre : Multi Financeur
+- description : Explicite si une subvention a été financée par plusieurs financeurs
+- type : boolean
+- exemple : true || false
+- valeur obligatoire
+
+### `identifiantSubvention`
+
+- titre : identifiant de la subvention
+- description : Identifiant permettant lier plusieurs lignes ensemble (Subvention multifiancées)
+- type : string
+- exemple : `string`
+- valeur obligatoire
+
 ### `nomAttribuant`
 
 - titre : Nom de l'attribuant
@@ -50,15 +66,51 @@ Ce modèle de données repose sur les 16 champs suivants correspondant aux colon
 - description : Date de la convention au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).
 - type : date
 - exemple : `2017-06-27`
-- valeur obligatoire
+- valeur optionnelle
+
+### `dateDecision`
+
+- titre : Date de la prise de décision d'attribution de la subvention
+- description : Date de la décision au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).
+- type : date
+- exemple : `2017-06-27`
+- valeur optionnelle
+
+### `dateDepot`
+
+- titre : Date de dépôt de la demande de subvention
+- description : Date de la dépôt au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).
+- type : date
+- exemple : `2017-06-27`
+- valeur optionnelle
+
+
+### `dateInstruction`
+
+- titre : Date de début d'instruction de la subvention
+- description : Date de la dépot au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).
+- type : date
+- exemple : `2017-06-27`
+- valeur optionnelle
+
 
 ### `referenceDecision`
 
 - titre : Référence de la décision
 - description : Identifiant interne de l’acte matérialisant la décision d’attribution de la subvention. Sa composition dépend des pratiques propres à la collectivité.
 - type : chaîne de caractères
-- exemple : `2017-03-103`
+- exemple : `2017-03-10` // Possible d'avoir plus d'exemples ? (EJ ?)
 - valeur optionnelle
+
+
+### `engagementJuridique`
+
+- titre : Engagement Juridique
+- description : Identifiant unique de l’acte budgétaire d'engagement de la subvention. 
+- type : chaîne de caractères
+- exemple : `21XXXXXXX`
+- valeur optionnelle
+
 
 ### `nomBeneficiaire`
 
@@ -93,13 +145,22 @@ Ce modèle de données repose sur les 16 champs suivants correspondant aux colon
 - valeur obligatoire
 - taille maximale : 256
 
-### `montant`
+### `montantTotal`
 
 - titre : Montant total de la subvention
-- description : Montant total de la subvention attribuée, exprimé en euros et calculé avant répartition entre les bénéficiaires dans le cas de bénéficaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.
+- description : Montant total de la subvention attribuée, exprimé en euros et calculé avant répartition entre les bénéficiaires dans le cas de bénéficiaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.
 - type : nombre réel
 - exemple : `47800.20`
 - valeur obligatoire
+
+
+### `montantAttribuant`
+
+- titre : Montant de la subvention attribué par l'attribuant
+- description : Montant de la subvention attribuée, exprimé en euros et calculé avant répartition entre les bénéficiaires dans le cas de bénéficiaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.
+- type : nombre réel
+- exemple : `47800.20`
+- valeur optionnelle
 
 ### `nature`
 
@@ -116,17 +177,26 @@ Ce modèle de données repose sur les 16 champs suivants correspondant aux colon
 - description : Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné' ou 'autre'. La valeur 'autre' correspond à une description libre des modalités de versement de la subvention dans la limite de 256 caractères maximum.
 - type : chaîne de caractères
 - exemple : `échelonné`
-- valeur obligatoire
+- valeur optionnelle
 - taille maximale : 256
 
-### `datesPeriodeVersement`
+### `dateDebutVersement`
 
-- titre : Date ou période de versement
-- description : Si le versement est unique et que la date précise est connue, alors il s'agit d'une date au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601). Si le versement est échelonné (ou que la date précise de versement unique est inconnue), alors il s'agit d'une période exprimée au format AAAA-MM-JJ/AAAA-MM-JJ où le séparateur entre la première et la seconde date de l'intervalle est la barre oblique suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).
+- titre : Date du premier versement
+- description :  date au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).
 - type : chaîne de caractères
-- exemple : `'2017-03-14' pour une date ou '2017-03-14/2018-03-14' pour une période`
+- exemple : `'2017-03-14'
 - valeur obligatoire
-- motif : `^[0-9]{4}\-[0-9]{2}\-[0-9]{2}(\/[0-9]{4}\-[0-9]{2}\-[0-9]{2})?$`
+- motif : `^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$`
+
+### `dateFinVersement`
+
+- titre : Date du dernier versement
+- description : En cas de versement unique, la valeur sera identique à `dateDebutVersement`. La date sera au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).
+- type : chaîne de caractères 
+- exemple : `'2017-03-14'
+- valeur obligatoire
+- motif : `^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$`
 
 ### `idRAE`
 
@@ -139,11 +209,11 @@ Ce modèle de données repose sur les 16 champs suivants correspondant aux colon
 
 ### `notificationUE`
 
-- titre : Aide d'Etat notifiée à la Commission Européenne
-- description : Subvention attribuée au titre d’une aide de minimis notifiée à la Commission Européenne en vertu des dispositions du règlement n° 1407/2013 du 18 décembre 2013. Seules les valeurs 'oui' ou 'non' sont autorisées.
+- titre : Aide d'État notifiée à la Commission européenne
+- description : Subvention attribuée (ou versée ?) au titre d’une aide de minimis notifiée à la Commission Européenne en vertu des dispositions du règlement n° 1407/2013 du 18 décembre 2013. Seules les valeurs 'oui' ou 'non' sont autorisées.
 - type : booléen
 - valeurs considérées comme vraies : oui
-- valeurs considérées comme fausses : non
+- valeurs considérées comme fausses : non // Ajouter une valeur "ne sait pas"
 - exemple : `non`
 - valeur obligatoire
 

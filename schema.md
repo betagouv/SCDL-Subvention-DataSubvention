@@ -3,8 +3,8 @@
 Spécification du modèle de données relatif aux subventions attribuées par une collectivité
 
 - nom : `subventions`
-- page d'accueil : https://git.opendatafrance.net/scdl/subventions
-- URL du schéma : https://git.opendatafrance.net/scdl/subventions/raw/v2.1.0/schema.json
+- page d'accueil : https://gitlab.com/opendatafrance/scdl/subventions
+- URL du schéma : https://gitlab.com/opendatafrance/scdl/subventions/raw/v2.1.0/schema.json
 - version : `2.1.0`
 - date de création : 27/04/2018
 - date de dernière modification : 08/02/2023
@@ -17,7 +17,7 @@ Spécification du modèle de données relatif aux subventions attribuées par un
   - Johan Richer, multi [johan.richer@multi.coop](johan.richer@multi.coop)
   - Amélie Rondot, multi [amelie.rondot@multi.coop](amelie.rondot@multi.coop)
 - ressources :
-  - Exemple de fichier subventions invalide ([lien](https://git.opendatafrance.net/scdl/subventions/raw/v2.0.1/exemples/exemple_invalide.csv))
+  - Exemple de fichier subventions invalide ([lien](https://gitlab.com/opendatafrance/scdl/subventions/raw/v2.0.1/exemples/exemple_invalide.csv))
 - sources :
   - Décret n° 2017-779 du 5 mai 2017 relatif à l&#x27;accès sous forme électronique aux données essentielles des conventions de subvention​ ([lien](https://www.legifrance.gouv.fr/jo_pdf.do?id=JORFTEXT000034600552))
   - Arrêté du 17 novembre 2017 relatif aux conditions de mises à disposition des données essentielles des conventions de subvention​ ([lien](https://www.legifrance.gouv.fr/jo_pdf.do?id=JORFTEXT000036040528))

@@ -1,6 +1,12 @@
 # Changelog
 
+## 2.1.1
+
+Migration de l'instance gitlab d'hébergement du schéma Catalogue vers l'instance publique https://gitlab.com/opendatafrance/scdl/subventions
+
+
 ## 2.1.0
+
 - Ajout du champs dispositifAide
 - Modification du champs idBeneficiaire : suppression de la contrainte champs requis
 - Rajout du champs rnaBeneficiaire non requis

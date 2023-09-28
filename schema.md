@@ -4,10 +4,10 @@ Spécification du modèle de données relatif aux subventions attribuées par un
 
 - nom : `subventions`
 - page d'accueil : https://gitlab.com/opendatafrance/scdl/subventions
-- URL du schéma : https://gitlab.com/opendatafrance/scdl/subventions/raw/v2.1.0/schema.json
-- version : `2.1.0`
+- URL du schéma : https://gitlab.com/opendatafrance/scdl/subventions/raw/v2.1.1/schema.json
+- version : `2.1.1`
 - date de création : 27/04/2018
-- date de dernière modification : 08/02/2023
+- date de dernière modification : 28/09/2023
 - concerne le pays : FR
 - valeurs manquantes représentées par : `[""]`
 - contributeurs :

@@ -4,8 +4,8 @@
   "title": "Subventions",
   "description": "Spécification du modèle de données relatif aux subventions attribuées par une collectivité",
   "countryCode": "FR",
-  "homepage": "https://gitlab.com/opendatafrance/scdl/subventions",
-  "path": "https://gitlab.com/opendatafrance/scdl/subventions/raw/v2.1.1/schema.json",
+  "homepage": "https://github.com/OpenDataFrance/subventions",
+  "path": "https://github.com/OpenDataFrance/subventions/raw/v2.1.1/schema.json",
   "resources": [
     {
       "title": "Exemple de fichier subventions valide",
@@ -35,43 +35,35 @@
     }
   ],
   "created": "2018-04-27",
-  "lastModified": "2023-09-28",
+  "lastModified": "2024-09-06",
   "version": "2.1.1",
   "contributors": [
     {
-      "title": "OpenDataFrance",
+      "title": "Data.Subvention",
       "role": "author"
     },
     {
-      "title": "Pierre Dittgen",
-      "organisation": "Jailbreak",
-      "email": "pierre.dittgen@jailbreak.paris",
-      "role": "author"
-    },
-    {
-      "title": "Quentin Loridant",
-      "organisation": "multi",
-      "email": "quentin.loridant@multi.coop",
-      "role": "contributor"
-    },
-    {
-      "title": "Johan Richer",
-      "organisation": "multi",
-      "email": "johan.richer@multi.coop",
-      "role": "contributor"
-    },
-    {
-      "title": "Amélie Rondot",
-      "organisation": "multi",
-      "email": "amelie.rondot@multi.coop",
+      "title": "Pierlou RAMADE",
+      "organisation": "data.gouv",
       "role": "contributor"
     }
   ],
   "fields": [
+
+    {
+      "name": "idSubvention",
+      "title": "Identifiant de la subvention",
+      "description": "id interne d'identification d'une subvention permettant de faire le lien avec les actions et permettant de relier les informations sur les différents exercices budgetaire d'une subvention pluriannuel. En cas de financement pluriannuel, cet idéntifiant est le même pour chaque exercice budgetaire.",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+
     {
       "name": "nomAttribuant",
       "title": "Nom de l'attribuant",
-      "description": "Nom officiel de la collectivité attribuant la subvention.",
+      "description": "Nom de l'administration qui 'pilote' le dispositif ou programme de subvention : l'administration délègue à l'opératuer la gestion de l'aide. Dans certains cas l'administration est égale à l'opérateur.",
       "type": "string",
       "example": "Région Bretagne",
       "constraints": {
@@ -81,7 +73,7 @@
     {
       "name": "idAttribuant",
       "title": "Identification de l'attribuant",
-      "description": "Identifiant du [Système d'Identification du Répertoire des Etablissements](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) (SIRET) de la collectivité attribuant la subvention, composé de 9 chiffres SIREN + 5 chiffres NIC d’un seul tenant.",
+      "description": "SIRET de l'administration qui 'pilote' le dispositif ou programme de subvention : l'administration qui délègue à l'opératuer la gestion de l'aide. Dans certains cas l'administration est égale à l'opérateur.",
       "type": "string",
       "example": "23350001600040",
       "constraints": {
@@ -90,21 +82,24 @@
       }
     },
     {
-      "name": "dateConvention",
-      "title": "Date de la convention de subvention",
-      "description": "Date de la convention au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
-      "type": "date",
-      "example": "2017-06-27",
+      "name": "nomServiceInstructeur",
+      "title": "Nom du service instructeur",
+      "description": "Nom du service qui instruit la demande. Si possible, reprendre le titre du service tel qu'affiché sur l'annuaire des services publics. https://lannuaire.service-public.fr/gouvernement/c6ef7a55-69ea-4c15-b6c8-addcde7bdb63",
+      "type": "string",
+      "example": "Région Bretagne",
       "constraints": {
-        "required": true
+        "required": false
       }
     },
     {
-      "name": "referenceDecision",
-      "title": "Référence de la décision",
-      "description": "Identifiant interne de l’acte matérialisant la décision d’attribution de la subvention. Sa composition dépend des pratiques propres à la collectivité.",
+      "name": "idServiceInstructeur",
+      "title": "Identification de l'attribuant",
+      "description": "Identifiant du service qui instruit la demande, par ex Un identifiant de la préfecture instruisant la demande ou SIRET pour les services qui en ont.",
       "type": "string",
-      "example": "2017-03-103"
+      "example": "23350001600040",
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "nomBeneficiaire",
@@ -119,20 +114,146 @@
     {
       "name": "idBeneficiaire",
       "title": "Identification SIRET du bénéficiaire",
-      "description": "Identifiant du [Système d'Identification du Répertoire des Etablissements](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) (SIRET) du bénéficiaire de la subvention, composé de 9 chiffres SIREN + 5 chiffres NIC d’un seul tenant. Dans le cadre précis d'une subvention en nature pour une association, il est possible de ne pas renseigner de SIRET. Il faudra alors renseigner le champ rnaBeneficiaire.",
+      "description": "Identifiant du [Système d'Identification du Répertoire des Etablissements](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) (SIRET) du l'établissement de l'association ayant demandé la subvention, composé de 9 chiffres SIREN + 5 chiffres NIC d’un seul tenant. Dans le cadre précis d'une subvention en nature pour une association, il est possible de ne pas renseigner de SIRET. Il faudra alors renseigner le champ rnaBeneficiaire.",
       "type": "string",
       "example": "38047555800058"
     },
     {
       "name": "rnaBeneficiaire",
       "title": "Identification RNA du bénéficiaire",
-      "description": "Numéro d'identification RNA [Répertoire National des Associations](https://associations.gouv.fr/le-rna-repertoire-national-des-associations.html) du bénéficiaire de la subvention, débutant par 'W' et composé de 9 chiffres",
+      "description": "Numéro d'identification RNA [Répertoire National des Associations](https://associations.gouv.fr/le-rna-repertoire-national-des-associations.html) de l'associaion ayant demandé la subvention, débutant par 'W' et composé de 9 chiffres",
       "type": "string",
       "example": "W380475558",
       "constraints": {
         "pattern": "^W\\d{9}$"
       }
     },
+    {
+      "name": "exerciceBudgetaire",
+      "title": "Exercice budgétaire",
+      "description": "Année de la réalisation des actions liées à la subvention. Si la subvention est pluriannuel, il faudra reporter une ligne par exercice budgetaire concerné par la subvention.",
+      "type": "integer",
+      "example": "2017",
+      "constraints": {
+        "required": false
+      }
+    },
+
+    {
+      "name": "pluriannualite",
+      "title": "Pluriannualité de la subvention",
+      "description" : "Indiquer si oui ou non la subvention est attribuée sur plusieurs années civiles consecutifs. Valeurs possibles : 'oui' ou 'non'.",
+      "type": "string",
+      "constraints": {
+        "required": false,
+        "enum": [
+          "oui",
+          "non"
+        ]
+      }
+    },
+
+    {
+      "name": "anneesPluriannualite",
+      "title": "Années de la pluriannualité",
+      "description": "si pluriannualité, indiquer les années de versement prévues.",
+      "type": "string",
+      "example" : "2020 - 2021 - 2022",
+      "constraints": {
+        "required": false
+      }
+    },
+
+    {
+      "name": "dateDecision",
+      "title": "Date de décision",
+      "description": "Date de la commission statuant sur l'attribution ou le refus de la subvention. Format : AAAA-MM-JJ",
+      "type": "date",
+      "example": "2017-06-27",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "dateConvention",
+      "title": "Date de la convention de subvention",
+      "description": "Date de signature de la convention au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "type": "date",
+      "example": "2017-06-27",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "referenceDecision",
+      "title": "Référence de la décision",
+      "description": "Identifiant interne de l’acte matérialisant la décision d’attribution de la subvention.",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "dateCreation",
+      "title": "Date création du dossier",
+      "description": "Date complète de dépôt de la demande. Format : AAAA-MM-JJsuivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "type": "date",
+      "example": "2017-06-27",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "dateDebut",
+      "title": "Date de début du projet",
+      "description": "Date de début du projet financé. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "type": "date",
+      "example": "2017-06-27",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "dateFin",
+      "title": "Date de fin du projet",
+      "description": "Date de fin du projet financé. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "type": "date",
+      "example": "2017-06-27",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "dispositif",
+      "title": "Dispositif de subvention",
+      "description": "Nom du dispositif de financement ou du programme de subvention.",
+      "type": "string",
+      "examples": "FIPDR, MILDECA, Fond sociale européen...",
+      "constraints": {
+        "required": false
+      }
+    },
+
+    {
+      "name": "sousDispositif",
+      "title": "Sous-dispositif de subvention",
+      "description": "s'il y en a, indiquer le nom du sous-dispositif ou du sous-programme.",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+
+    {
+      "name": "statutLabel",
+      "title": "Statut de la demande de subvention",
+      "description": "Statut du traitement de la demande. Valeurs possibles : en cours d'intruction, attribué, ineligible (la subvention ne respecte pas les critères d'eligibilité. Exemple : dossier incomplet), refusée (la demande a été instruite mais la subvention n'a pas été accordée).",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+
     {
       "name": "objet",
       "title": "Objet de la subvention",
@@ -142,16 +263,6 @@
       "constraints": {
         "required": true,
         "maxLength": 256
-      }
-    },
-    {
-      "name": "montant",
-      "title": "Montant total de la subvention",
-      "description": "Montant total de la subvention attribuée, exprimé en euros et calculé avant répartition entre les bénéficiaires dans le cas de bénéficaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
-      "type": "number",
-      "example": "47800.20",
-      "constraints": {
-        "required": true
       }
     },
     {
@@ -170,6 +281,67 @@
         ]
       }
     },
+
+    {
+      "name": "montantDemande",
+      "title": "Montant de la demande de subvention",
+      "montantDemande" : "Montant demandé par le demandeur pour un exercise budgetaire donnée. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
+      "type": "number",
+      "example": "47800.20",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "montant",
+      "title": "Montant total de la subvention",
+      "description": "Montant total de la subvention attribuée, exprimé en euros et calculé avant répartition entre les bénéficiaires dans le cas de bénéficaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
+      "type": "number",
+      "example": "47800.20",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name" : "nomOutilInstruction",
+      "title": "Nom de l'outil d'instruction",
+      "description": "s'il y en a, nom de l'outil utilisé pour instruire la demande de subvention.",
+      "type": "string",
+      "examples": "OSIRIS-Le Compte Asso, Le portail des aides, etc.",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name" : "nomOutilVersement",
+      "title": "Nom de l'outil de versement",
+      "description": "nom de l'outil utilisé pour la gestion des versements faites aux associations.",
+      "type": "string",
+      "examples": "Chorus, Portail Helios, etc.",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "ej",
+      "title": "engagement juridique de la demande de subvention",
+      "description": "Numéro d'Engagement Juridique. Laisser vide si non-concerné",
+      "type": "string",
+      "example": "2102368447",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "cléVersement",
+      "title": "Clé de versement",
+      "description": "Si un numéro d'Engagement Juridique n'existe pas renseigner l'identifiant permettant de relier la demande de subvention aux versements.",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+
     {
       "name": "conditionsVersement",
       "title": "Conditions de versement de la subvention",
@@ -193,6 +365,39 @@
       }
     },
     {
+      "name": "cofinancement",
+      "title": "Cofinancement",
+      "description": "Indiquer si le projet est cofinancé. Valeurs possibles : 'oui' ou 'non'.",
+      "type": "string",
+      "constraints": {
+        "required": false,
+        "enum": [
+          "oui",
+          "non"
+        ]
+      }
+    },
+    {
+      "name": "attribuantsCofinanceurs",
+      "title": "Attribuants cofinanceurs du projet",
+      "description": "Liste des attribuants cofinanceurs du projet. Si plusieurs attribuants, les séparer par des virgules.",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+
+    {
+      "name": "idCofinancement",
+      "title": "Identification du pojet cofinancé",
+      "description": "Identification unique pour un projet donné, commun à tous les cofinanceurs du projet",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+    
+    {
       "name": "idRAE",
       "title": "Identifiant RAE de l’aide au titre de laquelle la subvention est attribuée",
       "description": "Numéro unique de référencement dans le [Répertoire des Aides aux Entreprises](https://aides-entreprises.fr/). Ce champ ne concerne que les subventions attribuées au titre d’une aide référencée dans la [base de données du RAE](https://data.aides-entreprises.fr/documentation) gérée par l'Institut Supérieur des Métiers.",
@@ -214,6 +419,17 @@
         "required": true
       }
     },
+
+    {
+      "name": "regime",
+      "title": "Régime d'aide",
+      "description": "Régime d’aide auquel est soumise la subvention.",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+
     {
       "name": "pourcentageSubvention",
       "title": "Pourcentage du montant total de la subvention attribuée au bénéficiaire",
@@ -227,11 +443,32 @@
       }
     },
     {
-      "name": "dispositifAide",
-      "title": "Identifiant référençant le dispositif d'aide à l'origine de la subvention",
-      "description": "Identifiant présent dans les données issues du [schéma des dispositifs d'aide](https://schema.data.gouv.fr/etalab/schema-dispositif-aide/). Il peut être utilisé à la place de l'identifiant `idRAE` qui ne concerne que les aides aux entreprises.",
+      "name": "evaluationCout",
+      "title": "Evaluation du coût",
+      "description": "si il y a eu une évaluation de fin de projet, indiquer le coût total du projet. Chiffré en euros. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
+      "type": "number",
+      "example": "47800.20",
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "evaluation",
+      "title": "Evaluation du projet",
+      "description": "si il y a eu une évaluation de fin de projet, renseigner le résultat écrit de l'évaluation.",
       "type": "string",
-      "example": "65d5b6c7-102c-4440-ac3b-768f708edc0a"
+      "constraints": {
+        "required": false
+      }
+    },
+    {
+      "name": "dateMiseAJour",
+      "title": "Date de mise à jour",
+      "description": "Date à laquelle les données dans l'extract ont été mis à jour. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "type": "date",
+      "constraints": {
+        "required": false
+      }
     }
   ],
   "custom_checks": [

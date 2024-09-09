@@ -94,7 +94,7 @@
     {
       "name": "idServiceInstructeur",
       "title": "Identification de l'attribuant",
-      "description": "Identifiant du service qui instruit la demande, par ex Un identifiant de la préfecture instruisant la demande ou SIRET pour les services qui en ont.",
+      "description": "SIRET du service qui instruit la demande",
       "type": "string",
       "example": "23350001600040",
       "constraints": {
@@ -131,7 +131,7 @@
     {
       "name": "exerciceBudgetaire",
       "title": "Exercice budgétaire",
-      "description": "Année de la réalisation des actions liées à la subvention. Si la subvention est pluriannuel, il faudra reporter une ligne par exercice budgetaire concerné par la subvention.",
+      "description": "Année de la réalisation des actions liées à la subvention. Si la subvention est pluriannuel, il faudra renseigner une ligne par exercice budgetaire concerné par la subvention.",
       "type": "integer",
       "example": "2017",
       "constraints": {
@@ -285,7 +285,7 @@
     {
       "name": "montantDemande",
       "title": "Montant de la demande de subvention",
-      "montantDemande" : "Montant demandé par le demandeur pour un exercise budgetaire donnée. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
+      "montantDemande" : "Montant demandé par le demandeur pour un exercise budgetaire donnée, calculé après répartition entre les bénéficaires dans le cas de bénéficiaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
       "type": "number",
       "example": "47800.20",
       "constraints": {
@@ -464,7 +464,7 @@
     {
       "name": "dateMiseAJour",
       "title": "Date de mise à jour",
-      "description": "Date à laquelle les données dans l'extract ont été mis à jour. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "description": "Date de fin de la periode couverte par l'extract. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
       "type": "date",
       "constraints": {
         "required": false

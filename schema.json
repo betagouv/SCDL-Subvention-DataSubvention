@@ -250,7 +250,13 @@
       "description": "Statut du traitement de la demande. Valeurs possibles : en cours d'intruction, attribué, ineligible (la subvention ne respecte pas les critères d'eligibilité. Exemple : dossier incomplet), refusée (la demande a été instruite mais la subvention n'a pas été accordée).",
       "type": "string",
       "constraints": {
-        "required": false
+        "required": false,
+        "enum": [
+          "en cours d'intruction",
+          "attribuée",
+          "ineligible",
+          "refusée"
+        ]
       }
     },
 
@@ -342,17 +348,35 @@
       }
     },
 
+    
     {
       "name": "conditionsVersement",
       "title": "Conditions de versement de la subvention",
-      "description": "Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné' ou 'autre'. La valeur 'autre' correspond à une description libre des modalités de versement de la subvention dans la limite de 256 caractères maximum.",
+      "description": "Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné' ou 'autre'. ",
       "type": "string",
       "example": "échelonné",
+      "constraints": {
+        "required": true,
+        "enum" : [
+          "unique",
+          "échelonné",
+          "autre"
+        ]
+      }
+    },
+    
+    {
+      "name": "descriptionConditionsVersement",
+      "title": "Description des conditions de versement de la subvention",
+      "description": "Si conditionsVersements est égale à 'autre', description libre des modalités de versement de la subvention dans la limite de 256 caractères maximum.",
+      "type": "string",
       "constraints": {
         "required": true,
         "maxLength": 256
       }
     },
+
+
     {
       "name": "datesPeriodeVersement",
       "title": "Date ou période de versement",
@@ -380,7 +404,7 @@
     {
       "name": "attribuantsCofinanceurs",
       "title": "Attribuants cofinanceurs du projet",
-      "description": "Liste des attribuants cofinanceurs du projet. Si plusieurs attribuants, les séparer par des virgules.",
+      "description": "Liste des noms des attribuants cofinanceurs du projet. Si plusieurs attribuants, les séparer par des virgules.",
       "type": "string",
       "constraints": {
         "required": false
@@ -411,24 +435,17 @@
       "name": "notificationUE",
       "title": "Aide d'Etat notifiée à la Commission Européenne",
       "description": "Subvention attribuée au titre d’une aide de minimis notifiée à la Commission Européenne en vertu des dispositions du règlement n° 1407/2013 du 18 décembre 2013. Seules les valeurs 'oui' ou 'non' sont autorisées.",
-      "type": "boolean",
-      "trueValues": ["oui"],
-      "falseValues": ["non"],
+      "type": "string",
       "example": "non",
       "constraints": {
-        "required": true
+        "required": true,
+        "enum": [
+          "oui",
+          "non"
+        ]
       }
     },
 
-    {
-      "name": "regime",
-      "title": "Régime d'aide",
-      "description": "Régime d’aide auquel est soumise la subvention.",
-      "type": "string",
-      "constraints": {
-        "required": false
-      }
-    },
 
     {
       "name": "pourcentageSubvention",
